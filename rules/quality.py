@@ -28,3 +28,41 @@ class UnusedImportRule(BaseRule):
                     filename, line, self.category, "low",
                     f"Unused import: {name}"))
         return issues
+    
+
+
+
+
+
+class MissingDocstringRule(BaseRule):
+    """Flags functions and classes that have no docstring."""
+    name = "missing-docstring"
+    category = "QUALITY"
+
+    def check(self, tree, filename):
+        issues = []
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+                if ast.get_docstring(node) is None:
+                    issues.append(Issue(
+                        filename, node.lineno, self.category, "low",
+                        f"Missing docstring in '{node.name}'"))
+        return issues
+
+
+class LongFunctionRule(BaseRule):
+    """Flags functions longer than MAX_LINES lines."""
+    name = "long-function"
+    category = "QUALITY"
+    MAX_LINES = 50
+
+    def check(self, tree, filename):
+        issues = []
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef):
+                length = (node.end_lineno or node.lineno) - node.lineno + 1
+                if length > self.MAX_LINES:
+                    issues.append(Issue(
+                        filename, node.lineno, self.category, "medium",
+                        f"Function '{node.name}' is {length} lines long (max {self.MAX_LINES})"))
+        return issues

@@ -2,9 +2,11 @@ import ast
 import argparse
 from scanner import find_python_files
 from rules.security import DangerousCallRule
-from rules.quality import UnusedImportRule
+from rules.quality import UnusedImportRule, MissingDocstringRule, LongFunctionRule
 
-RULES = [DangerousCallRule(), UnusedImportRule()]
+RULES = [DangerousCallRule(), UnusedImportRule(),
+         MissingDocstringRule(), LongFunctionRule()]
+
 
 
 def analyze_file(path):
