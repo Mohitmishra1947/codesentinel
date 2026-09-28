@@ -2,8 +2,9 @@ import ast
 import argparse
 from scanner import find_python_files
 from rules.security import DangerousCallRule
+from rules.quality import UnusedImportRule
 
-RULES = [DangerousCallRule()]   # we'll add more rules here later
+RULES = [DangerousCallRule(), UnusedImportRule()]
 
 
 def analyze_file(path):
