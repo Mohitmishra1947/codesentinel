@@ -4,3 +4,5 @@ venv/
 .venv/
 *.db
 report.html
+codesentinel.log
+report.html
