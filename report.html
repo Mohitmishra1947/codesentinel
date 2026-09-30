@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CodeSentinel Report</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 40px; background: #f5f6fa; }
+  h1 { color: #2c3e50; }
+  .cards { display: flex; gap: 20px; margin-bottom: 30px; }
+  .card { background: white; padding: 20px 30px; border-radius: 8px;
+           box-shadow: 0 1px 4px rgba(0,0,0,0.15); text-align: center; }
+  .card .num { font-size: 36px; font-weight: bold; color: #2c3e50; }
+  table { border-collapse: collapse; width: 100%; background: white; }
+  th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+  th { background: #2c3e50; color: white; }
+</style>
+</head>
+<body>
+<h1>CodeSentinel Report</h1>
+<div class="cards">
+  <div class="card"><div class="num">96/100</div>Quality Score</div>
+  <div class="card"><div class="num">A</div>Grade</div>
+  <div class="card"><div class="num">12</div>Files Scanned</div>
+  <div class="card"><div class="num">14</div>Issues Found</div>
+</div>
+<table>
+<tr><th>File</th><th>Line</th><th>Category</th><th>Severity</th><th>Message</th></tr>
+<tr><td>.\complex_sample.py</td><td>1</td><td>COMPLEXITY</td><td style='color:#f0ad4e;font-weight:bold'>medium</td><td>Function &#x27;messy&#x27; has complexity 11 (max 10)</td></tr><tr><td>.\main.py</td><td>29</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;main&#x27;</td></tr><tr><td>.\reporter.py</td><td>14</td><td>QUALITY</td><td style='color:#f0ad4e;font-weight:bold'>medium</td><td>Function &#x27;write_html_report&#x27; is 51 lines long (max 50)</td></tr><tr><td>.\rules\complexity.py</td><td>25</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\rules\quality.py</td><td>11</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\rules\quality.py</td><td>11</td><td>COMPLEXITY</td><td style='color:#f0ad4e;font-weight:bold'>medium</td><td>Function &#x27;check&#x27; has complexity 11 (max 10)</td></tr><tr><td>.\rules\quality.py</td><td>42</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\rules\quality.py</td><td>59</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\rules\security.py</td><td>12</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\rules\security.py</td><td>30</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\sample.py</td><td>1</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Unused import: os</td></tr><tr><td>.\sample.py</td><td>4</td><td>QUALITY</td><td style='color:#5bc0de;font-weight:bold'>low</td><td>Missing docstring in &#x27;check&#x27;</td></tr><tr><td>.\sample.py</td><td>6</td><td>SECURITY</td><td style='color:#d9534f;font-weight:bold'>high</td><td>Use of eval() is dangerous</td></tr><tr><td>.\sample.py</td><td>8</td><td>SECURITY</td><td style='color:#d9534f;font-weight:bold'>high</td><td>Hardcoded secret in variable &#x27;password&#x27;</td></tr>
+</table>
+</body>
+</html>

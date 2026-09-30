@@ -1,13 +1,14 @@
 import ast
 import argparse
 from scanner import find_python_files
+from scorer import calculate_score
+from reporter import print_cli_report, write_html_report
 from rules.security import DangerousCallRule, HardcodedPasswordRule
 from rules.quality import UnusedImportRule, MissingDocstringRule, LongFunctionRule
 from rules.complexity import ComplexityRule
 
 RULES = [DangerousCallRule(), HardcodedPasswordRule(), UnusedImportRule(),
          MissingDocstringRule(), LongFunctionRule(), ComplexityRule()]
-
 
 
 def analyze_file(path):
@@ -28,15 +29,21 @@ def analyze_file(path):
 def main():
     parser = argparse.ArgumentParser(description="CodeSentinel static analyzer")
     parser.add_argument("path", help="Python file or folder to scan")
+    parser.add_argument("--html", metavar="FILE", help="Save an HTML report")
     args = parser.parse_args()
 
+    files = find_python_files(args.path)
     all_issues = []
-    for file in find_python_files(args.path):
+    for file in files:
         all_issues.extend(analyze_file(file))
+    all_issues.sort(key=lambda x: (x.filename, x.line))
 
-    for i in sorted(all_issues, key=lambda x: (x.filename, x.line)):
-        print(f"{i.filename}:{i.line} [{i.category}/{i.severity}] {i.message}")
-    print(f"\n{len(all_issues)} issue(s) found")
+    score = calculate_score(all_issues, len(files))
+    print_cli_report(all_issues, score, len(files))
+
+    if args.html:
+        write_html_report(all_issues, score, len(files), args.html)
+        print(f"HTML report saved to {args.html}")
 
 
 if __name__ == "__main__":
