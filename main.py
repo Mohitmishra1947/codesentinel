@@ -1,10 +1,10 @@
 import ast
 import argparse
 from scanner import find_python_files
-from rules.security import DangerousCallRule
+from rules.security import DangerousCallRule, HardcodedPasswordRule
 from rules.quality import UnusedImportRule, MissingDocstringRule, LongFunctionRule
 
-RULES = [DangerousCallRule(), UnusedImportRule(),
+RULES = [DangerousCallRule(), HardcodedPasswordRule(), UnusedImportRule(),
          MissingDocstringRule(), LongFunctionRule()]
 
 

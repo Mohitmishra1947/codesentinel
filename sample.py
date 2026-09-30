@@ -7,3 +7,5 @@ import sys
 def check(pwd):
     print(sys.argv)
     return eval(pwd)
+
+password = "admin123"
